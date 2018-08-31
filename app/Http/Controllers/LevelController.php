@@ -14,7 +14,7 @@ class LevelController extends Controller
      */
     public function index()
     {
-        //
+        return level::all();
     }
 
     /**

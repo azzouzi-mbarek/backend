@@ -2,22 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\Country\CountryCollection;
-use App\Http\Resources\Country\CountryResource;
-use App\Model\Country;
-use App\Model\Region;
+use App\Model\Institution\CategoryInstitution;
 use Illuminate\Http\Request;
 
-class CountryController extends Controller
+class CategoryInstitutionController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Region $region)
+    public function index()
     {
-        return CountryCollection::collection($region->Country);
+        //
     }
 
     /**
@@ -44,22 +41,21 @@ class CountryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Model\Country  $country
-     * @return CountryResource
+     * @param  \App\Model\Institution\CategoryInstitution  $categoryInstitution
+     * @return \Illuminate\Http\Response
      */
-    public function show( $country)
+    public function show(CategoryInstitution $categoryInstitution)
     {
-
-       return new CountryResource(Country::find($country)) ;
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Model\Country  $country
+     * @param  \App\Model\Institution\CategoryInstitution  $categoryInstitution
      * @return \Illuminate\Http\Response
      */
-    public function edit(Country $country)
+    public function edit(CategoryInstitution $categoryInstitution)
     {
         //
     }
@@ -68,10 +64,10 @@ class CountryController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Model\Country  $country
+     * @param  \App\Model\Institution\CategoryInstitution  $categoryInstitution
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Country $country)
+    public function update(Request $request, CategoryInstitution $categoryInstitution)
     {
         //
     }
@@ -79,10 +75,10 @@ class CountryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Model\Country  $country
+     * @param  \App\Model\Institution\CategoryInstitution  $categoryInstitution
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Country $country)
+    public function destroy(CategoryInstitution $categoryInstitution)
     {
         //
     }

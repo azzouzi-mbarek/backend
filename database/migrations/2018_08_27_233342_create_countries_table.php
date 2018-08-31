@@ -17,8 +17,10 @@ class CreateCountriesTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->integer('region_id')->unsigned()->index();
-            $table->foreign('region_id')->references('id')->on('regions')->onDelete('cascade');
             $table->timestamps();
+        });
+        Schema::table('countries', function (Blueprint $table) {
+            $table->foreign('region_id')->references('id')->on('regions')->onDelete('cascade');
         });
     }
 

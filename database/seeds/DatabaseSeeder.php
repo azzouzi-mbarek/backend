@@ -23,5 +23,12 @@ class DatabaseSeeder extends Seeder
         factory(App\Model\Level\Finance::class,5)->create();
         factory(App\Model\Level\LegalFramework::class,5)->create();
         factory(App\Model\Level\Population::class,5)->create();
+        factory(App\Model\Institution\CategoryInstitution::class,10)->create();
+        factory(App\Model\Institution\Institution::class,50)->create();
+        factory(App\Model\Person\Person::class,50)->create();
+        factory(App\Model\Person\CategoryPerson::class,10)->create();
+        factory(App\Model\Person\LevelPerson::class,50)->create();
+        factory(App\Model\Person\InstitutionPerson::class,50)->create();
+        factory(App\Model\Person\CountryPerson::class,50)->create();
     }
 }

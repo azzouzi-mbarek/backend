@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePopulationsTable extends Migration
+class CreateInstitutionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreatePopulationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('populations', function (Blueprint $table) {
+        Schema::create('institutions', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('population');
-            $table->integer('level_id')->unsigned()->index();
+            $table->string('name');
+            $table->integer('category_institution_id')->unsigned()->index();
             $table->timestamps();
         });
-        Schema::table('populations', function (Blueprint $table) {
-            $table->foreign('level_id')->references('id')->on('levels');
+        Schema::table('institutions', function (Blueprint $table) {
+            $table->foreign('category_institution_id')->references('id')->on('category_institutions');
         });
     }
 
@@ -31,6 +31,6 @@ class CreatePopulationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('populations');
+        Schema::dropIfExists('institutions');
     }
 }

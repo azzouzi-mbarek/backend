@@ -21,3 +21,5 @@ Route::apiResource('/regions', 'RegionController');
 Route::group(['prefix' => 'regions'], function () {
     Route::apiResource('/{region}/countries','CountryController');
 });
+
+Route::apiResource('/levels', 'LevelController');

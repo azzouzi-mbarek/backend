@@ -17,8 +17,10 @@ class CreateEvenementsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->integer('level_id')->unsigned()->index();
-            $table->foreign('level_id')->references('id')->on('levels');
             $table->timestamps();
+        });
+        Schema::table('evenements', function (Blueprint $table) {
+            $table->foreign('level_id')->references('id')->on('levels');
         });
     }
 
