@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\Level\FinanceCollection;
 use App\Model\Level\Finance;
+use App\Model\Level\Level;
 use Illuminate\Http\Request;
 
 class FinanceController extends Controller
@@ -12,9 +14,9 @@ class FinanceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($region_id,$country_id,Level $level)
     {
-        //
+        return FinanceCollection::collection($level->Finance);
     }
 
     /**

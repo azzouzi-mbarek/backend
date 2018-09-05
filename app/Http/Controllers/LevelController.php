@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\Level\LevelCollection;
+use App\Http\Resources\Level\LevelResource;
+use App\Model\Country;
 use App\Model\Level\Level;
 use Illuminate\Http\Request;
 
@@ -12,9 +15,24 @@ class LevelController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($region_id = null, $country_id = null, Request $request)
     {
-        return level::all();
+        $level_id = $request->id;
+
+
+        // return level only level one
+        if ($level_id == null) {
+            $country = Country::find($country_id);
+            $levels = $country->levels()->where('level_id', $level_id)->get();
+
+        } else {
+            $level = Level::find($level_id);
+            $levels = $level->levels()->where('level_id', $level_id)->get();
+
+        }
+
+        return LevelCollection::collection($levels);
+
     }
 
     /**
@@ -44,9 +62,12 @@ class LevelController extends Controller
      * @param  \App\Model\Level\Level  $level
      * @return \Illuminate\Http\Response
      */
-    public function show(Level $level)
+    public function show($region_id, $country_id, $level_id)
     {
-        //
+        $level = Level::find($level_id);
+
+        return new LevelResource($level);
+
     }
 
     /**

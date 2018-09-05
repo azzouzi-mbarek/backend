@@ -16,6 +16,7 @@ class CreateLegalFrameworksTable extends Migration
         Schema::create('legal_frameworks', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->string('url');
             $table->integer('level_id')->unsigned()->index();
             $table->timestamps();
         });

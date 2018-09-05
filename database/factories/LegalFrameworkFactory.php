@@ -9,5 +9,6 @@ $factory->define(App\Model\Level\LegalFramework::class, function (Faker $faker) 
             return Level::all()->random();
         },
         'name' => $faker->name,
+        'url' => $faker->url,
     ];
 });

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\Level\PopulationCollection;
+use App\Model\Level\Level;
 use App\Model\Level\Population;
 use Illuminate\Http\Request;
 
@@ -12,9 +14,9 @@ class PopulationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($region_id,$country_id,Level $level)
     {
-        //
+        return PopulationCollection::collection($level->Population);
     }
 
     /**

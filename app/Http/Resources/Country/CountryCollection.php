@@ -17,7 +17,7 @@ class CountryCollection extends Resource
         return [
             'name' => $this->name,
             'href' => [
-                'link' => route('countries.show',[$this->region ,$this->id])
+                'link' => route('countries.show',[$this->region->id ,$this->id])
             ]
         ];
     }

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\Level\CommunicationToolCollection;
 use App\Model\Level\CommunicationTool;
+use App\Model\Level\Level;
 use Illuminate\Http\Request;
 
 class CommunicationToolController extends Controller
@@ -12,9 +14,10 @@ class CommunicationToolController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($region_id,$country_id,Level $level)
     {
-        //
+        return CommunicationToolCollection::collection($level->CommunicationTool);
+
     }
 
     /**

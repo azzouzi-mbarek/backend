@@ -16,14 +16,14 @@ class CreateLevelsTable extends Migration
         Schema::create('levels', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->integer('country_id')->unsigned()->index();
-            $table->integer('category_level_id')->unsigned()->index();
-            $table->integer('level_id')->unsigned()->index();
+            $table->integer('country_id')->nullable()->unsigned()->index();
+//            $table->integer('category_level_id')->unsigned()->index();
+            $table->integer('level_id')->nullable()->unsigned()->index();
             $table->timestamps();
         });
         Schema::table('levels', function (Blueprint $table) {
             $table->foreign('country_id')->references('id')->on('countries');
-            $table->foreign('category_level_id')->references('id')->on('category_levels');
+//            $table->foreign('category_level_id')->references('id')->on('category_levels');
             $table->foreign('level_id')->references('id')->on('levels');
         });
     }

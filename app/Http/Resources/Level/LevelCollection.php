@@ -1,0 +1,41 @@
+<?php
+
+namespace App\Http\Resources\Level;
+
+use App\Model\Country;
+use App\Model\Level\Level;
+use Illuminate\Http\Resources\Json\JsonResource;
+
+class LevelCollection extends JsonResource
+{
+    /**
+     * Transform the resource collection into an array.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @return array
+     */
+    public function toArray($request)
+    {
+
+
+
+
+        return [
+
+            'id' => $this->id,
+            'nom' => $this->name,
+            'country_id' => $this->country_id,
+            'level_id' => $this->level ,
+            'emp' => 'levelCollection',
+
+            'href' => [
+                'link' => (function () {
+
+                    $region_id = Country::find($this->country_id)->region->id;
+                    return route('levels.show' , [$region_id , $this->country_id , $this->id]) ;
+
+                })()
+            ],
+        ];
+    }
+}

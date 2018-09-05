@@ -19,7 +19,17 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::apiResource('/regions', 'RegionController');
 
 Route::group(['prefix' => 'regions'], function () {
-    Route::apiResource('/{region}/countries','CountryController');
-});
+    Route::apiResource('/{region}/countries', 'CountryController');
 
-Route::apiResource('/levels', 'LevelController');
+    Route::group(['prefix' => '/{regions}/countries'], function () {
+        Route::apiResource('/{country}/levels', 'LevelController');
+    });
+    Route::group(['prefix' => '/{regions}/countries/{country}/levels'], function () {
+        Route::apiResource('/{level}/population', 'PopulationController');
+        Route::apiResource('/{level}/legal_frameworks', 'LegalFrameworkController');
+        Route::apiResource('/{level}/communication_tools', 'CommunicationToolController');
+        Route::apiResource('/{level}/finances', 'FinanceController');
+
+    });
+
+});

@@ -2,6 +2,7 @@
 
 namespace App\Model;
 
+use App\Model\Level\Level;
 use Illuminate\Database\Eloquent\Model;
 
 class Country extends Model
@@ -10,7 +11,7 @@ class Country extends Model
         return $this->belongsTo(Region::class);
     }
 
-    public  function  Level(){
+    public  function  Levels(){
         return $this->hasMany(Level::class);
     }
 }

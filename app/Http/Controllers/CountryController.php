@@ -47,7 +47,7 @@ class CountryController extends Controller
      * @param  \App\Model\Country  $country
      * @return CountryResource
      */
-    public function show( $country)
+    public function show( $region , $country)
     {
 
        return new CountryResource(Country::find($country)) ;

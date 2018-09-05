@@ -15,7 +15,14 @@ class CountryResource extends Resource
     public function toArray($request)
     {
         return [
-          'name'=>$this->name
+            'id' => $this->id,
+            'name' => $this->name,
+            'emp' => 'countryResource',
+            'region_id'=> $this->region->id ,
+            'country_id' => $this->id ,
+            'href' => [
+                'Levels 1' => route('levels.index', [$this->region->id, $this->id , null])
+            ]
         ];
     }
 }

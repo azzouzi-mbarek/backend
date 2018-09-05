@@ -12,7 +12,14 @@
 */
 
 
+use App\Model\Level\Level;
+
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/levels', function () {
+    $levels=Level::all();
+    return view('levels')->with('levels',$levels);
 });
 Route::get('country', 'CountryController@show');

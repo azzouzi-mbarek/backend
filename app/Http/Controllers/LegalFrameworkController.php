@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\Level\LegalFrameworkCollection;
 use App\Model\Level\LegalFramework;
+use App\Model\Level\Level;
 use Illuminate\Http\Request;
 
 class LegalFrameworkController extends Controller
@@ -12,9 +14,9 @@ class LegalFrameworkController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($region_id,$country_id,Level $level)
     {
-        //
+        return LegalFrameworkCollection::collection($level->LegalFramework);
     }
 
     /**
