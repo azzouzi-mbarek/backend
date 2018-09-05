@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\Level\EvenementCollection;
 use App\Model\Level\Evenement;
+use App\Model\Level\Level;
 use Illuminate\Http\Request;
 
 class EvenementController extends Controller
@@ -12,9 +14,9 @@ class EvenementController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($region_id,$country_id,Level $level)
     {
-        //
+        return EvenementCollection::collection($level->Evenement);
     }
 
     /**

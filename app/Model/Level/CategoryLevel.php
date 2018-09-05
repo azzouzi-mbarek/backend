@@ -2,7 +2,6 @@
 
 namespace App\Model\Level;
 
-use App\Model\Level;
 use Illuminate\Database\Eloquent\Model;
 
 class CategoryLevel extends Model

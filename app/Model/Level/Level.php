@@ -35,10 +35,10 @@ class Level extends Model
     public  function  Finance(){
         return $this->hasMany(Finance::class);
     }
-//    public  function  Evenement(){
-//        return $this->hasMany(Evenement::class);
-//    }
-//    public  function  Programme(){
-//        return $this->hasMany(Programme::class);
-//    }
+    public  function  Evenement(){
+        return $this->hasMany(Evenement::class);
+    }
+    public  function  Programme(){
+        return $this->hasMany(Programme::class);
+    }
 }

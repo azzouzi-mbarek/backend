@@ -3,6 +3,7 @@
 namespace App\Http\Resources\Level;
 
 use App\Model\Country;
+use App\Model\Level\CategoryLevel;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class LevelResource extends JsonResource
@@ -18,6 +19,7 @@ class LevelResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
+            'category_level' => CategoryLevel::find($this->category_level_id)->name,
             'region_id' => $this->country->region->id,
             'country_id' => $this->country_id,
             'population' => [
@@ -42,6 +44,18 @@ class LevelResource extends JsonResource
                 'link' => (function () {
                     $region_id = Country::find($this->country_id)->region->id;
                     return route('finances.index', [$region_id, $this->country_id, $this->id]);
+                })()
+            ],
+            'evenements' => [
+                'link' => (function () {
+                    $region_id = Country::find($this->country_id)->region->id;
+                    return route('evenements.index', [$region_id, $this->country_id, $this->id]);
+                })()
+            ],
+            'programmes' => [
+                'link' => (function () {
+                    $region_id = Country::find($this->country_id)->region->id;
+                    return route('programmes.index', [$region_id, $this->country_id, $this->id]);
                 })()
             ],
             'level_id' => $this->level,

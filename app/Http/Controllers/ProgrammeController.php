@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\Level\ProgrammeCollection;
+use App\Model\Level\Level;
 use App\Model\Level\Programme;
 use Illuminate\Http\Request;
 
@@ -12,9 +14,9 @@ class ProgrammeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($region_id, $country_id, Level $level)
     {
-        //
+        return ProgrammeCollection::collection($level->Programme);
     }
 
     /**
@@ -30,7 +32,7 @@ class ProgrammeController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -41,7 +43,7 @@ class ProgrammeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Model\Level\Programme  $programme
+     * @param  \App\Model\Level\Programme $programme
      * @return \Illuminate\Http\Response
      */
     public function show(Programme $programme)
@@ -52,7 +54,7 @@ class ProgrammeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Model\Level\Programme  $programme
+     * @param  \App\Model\Level\Programme $programme
      * @return \Illuminate\Http\Response
      */
     public function edit(Programme $programme)
@@ -63,8 +65,8 @@ class ProgrammeController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Model\Level\Programme  $programme
+     * @param  \Illuminate\Http\Request $request
+     * @param  \App\Model\Level\Programme $programme
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Programme $programme)
@@ -75,7 +77,7 @@ class ProgrammeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Model\Level\Programme  $programme
+     * @param  \App\Model\Level\Programme $programme
      * @return \Illuminate\Http\Response
      */
     public function destroy(Programme $programme)

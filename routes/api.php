@@ -29,6 +29,8 @@ Route::group(['prefix' => 'regions'], function () {
         Route::apiResource('/{level}/legal_frameworks', 'LegalFrameworkController');
         Route::apiResource('/{level}/communication_tools', 'CommunicationToolController');
         Route::apiResource('/{level}/finances', 'FinanceController');
+        Route::apiResource('/{level}/evenements', 'EvenementController');
+        Route::apiResource('/{level}/programmes', 'ProgrammeController');
 
     });
 

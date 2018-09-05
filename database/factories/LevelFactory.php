@@ -12,7 +12,10 @@ $factory->define(App\Model\Level\Level::class, function (Faker $faker) {
         'country_id' => function () {
             return Country::all()->random();
         },
+        'category_level_id' => function () {
+            return CategoryLevel::all()->random();
+        },
 
-        'level_id' =>  null ,
+        'level_id' => null,
     ];
 });
