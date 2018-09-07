@@ -3,6 +3,8 @@
 namespace App\Model\Level;
 
 use App\Model\Country;
+use App\Model\Institution\Institution;
+use App\Model\Person\Person;
 use Illuminate\Database\Eloquent\Model;
 
 class Level extends Model
@@ -40,5 +42,11 @@ class Level extends Model
     }
     public  function  Programme(){
         return $this->hasMany(Programme::class);
+    }
+    public  function  Persons(){
+        return $this->belongsToMany(Person::class);
+    }
+    public  function  Institutions(){
+        return $this->belongsToMany(Institution::class);
     }
 }

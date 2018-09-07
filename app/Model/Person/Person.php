@@ -21,5 +21,8 @@ class Person extends Model
     public  function  Countries(){
         return $this->belongsToMany(Country::class);
     }
+    public  function  CategoryPersons(){
+        return $this->belongsToMany(CategoryPerson::class);
+    }
 
 }

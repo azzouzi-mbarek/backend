@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\Person\PersonCollection;
+use App\Model\Level\Level;
 use App\Model\Person\Person;
 use Illuminate\Http\Request;
 
@@ -12,9 +14,9 @@ class PersonController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($region_id,$country_id,Level $level)
     {
-        //
+        return PersonCollection::collection($level->Persons);
     }
 
     /**
@@ -44,9 +46,9 @@ class PersonController extends Controller
      * @param  \App\Model\Person\Person  $person
      * @return \Illuminate\Http\Response
      */
-    public function show(Person $person)
+    public function show($region_id, $country_id, $level_id,$id)
     {
-        //
+        dd($region_id, $country_id, $level_id,$id);
     }
 
     /**

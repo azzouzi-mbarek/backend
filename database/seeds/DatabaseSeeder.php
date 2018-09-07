@@ -24,16 +24,17 @@ class DatabaseSeeder extends Seeder
         factory(App\Model\Level\Finance::class,100)->create();
         factory(App\Model\Level\Evenement::class,100)->create();
         factory(App\Model\Level\Programme::class,100)->create();
+        factory(App\Model\Person\CategoryPerson::class,50)->create();
+        factory(App\Model\Person\Person::class,50)->create();
+        factory(App\Model\Person\LevelPerson::class,50)->create();
+        factory(App\Model\Institution\CategoryInstitution::class,10)->create();
+        factory(App\Model\Institution\Institution::class,50)->create();
+        factory(App\Model\Level\CategoryLevelInstitution::class,4)->create();
+        factory(App\Model\Level\InstitutionLevel::class,100)->create();
 
 
 
 
-
-//        factory(App\Model\Institution\CategoryInstitution::class,10)->create();
-//        factory(App\Model\Institution\Institution::class,50)->create();
-//        factory(App\Model\Person\Person::class,50)->create();
-//        factory(App\Model\Person\CategoryPerson::class,10)->create();
-//        factory(App\Model\Person\LevelPerson::class,50)->create();
 //        factory(App\Model\Person\InstitutionPerson::class,50)->create();
 //        factory(App\Model\Person\CountryPerson::class,50)->create();
 //        factory(App\Model\Institution\CountryInstitution::class,50)->create();

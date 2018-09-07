@@ -2,12 +2,14 @@
 
 namespace App\Model\Institution;
 
+use App\Model\Level\Level;
 use Illuminate\Database\Eloquent\Model;
 
 class Institution extends Model
 {
-    public function CategoryInstitution()
+
+    public function Levels()
     {
-        return $this->belongsTo(CategoryInstitution::class);
+        return $this->belongsTo(Level::class);
     }
 }

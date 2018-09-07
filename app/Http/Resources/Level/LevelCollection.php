@@ -28,7 +28,7 @@ class LevelCollection extends JsonResource
             'level_id' => $this->level ,
             'emp' => 'levelCollection',
 
-            'href' => [
+            'detail_level' => [
                 'link' => (function () {
 
                     $region_id = Country::find($this->country_id)->region->id;

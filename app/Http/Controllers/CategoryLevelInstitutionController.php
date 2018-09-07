@@ -2,23 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\Institution\InstitutionCollection;
-use App\Model\Institution\Institution;
-use App\Model\Level\Level;
+use App\Model\Level\CategoryLevelInstitution;
 use Illuminate\Http\Request;
 
-class InstitutionController extends Controller
+class CategoryLevelInstitutionController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($region_id, $country_id, Level $level)
+    public function index()
     {
-
-        return InstitutionCollection::collection($level->Institutions);
-
+        //
     }
 
     /**
@@ -34,7 +30,7 @@ class InstitutionController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -45,10 +41,10 @@ class InstitutionController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Model\Institution\Institution $institution
+     * @param  \App\Model\Level\CategoryLevelInstitution  $categoryLevelInstitution
      * @return \Illuminate\Http\Response
      */
-    public function show(Institution $institution)
+    public function show(CategoryLevelInstitution $categoryLevelInstitution)
     {
         //
     }
@@ -56,10 +52,10 @@ class InstitutionController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Model\Institution\Institution $institution
+     * @param  \App\Model\Level\CategoryLevelInstitution  $categoryLevelInstitution
      * @return \Illuminate\Http\Response
      */
-    public function edit(Institution $institution)
+    public function edit(CategoryLevelInstitution $categoryLevelInstitution)
     {
         //
     }
@@ -67,11 +63,11 @@ class InstitutionController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  \App\Model\Institution\Institution $institution
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Model\Level\CategoryLevelInstitution  $categoryLevelInstitution
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Institution $institution)
+    public function update(Request $request, CategoryLevelInstitution $categoryLevelInstitution)
     {
         //
     }
@@ -79,10 +75,10 @@ class InstitutionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Model\Institution\Institution $institution
+     * @param  \App\Model\Level\CategoryLevelInstitution  $categoryLevelInstitution
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Institution $institution)
+    public function destroy(CategoryLevelInstitution $categoryLevelInstitution)
     {
         //
     }

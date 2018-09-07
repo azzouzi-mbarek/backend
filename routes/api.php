@@ -31,6 +31,8 @@ Route::group(['prefix' => 'regions'], function () {
         Route::apiResource('/{level}/finances', 'FinanceController');
         Route::apiResource('/{level}/evenements', 'EvenementController');
         Route::apiResource('/{level}/programmes', 'ProgrammeController');
+        Route::apiResource('/{level}/persons', 'PersonController');
+        Route::apiResource('/{level}/institutions', 'InstitutionController');
 
     });
 
