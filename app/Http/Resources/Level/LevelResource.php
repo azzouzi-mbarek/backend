@@ -28,7 +28,7 @@ class LevelResource extends JsonResource
             'numbre_cl_inclus'=> Level::all()->where('level_id',$this->id)->count(),
             'population' => [
                 'link' => (function () {
-                    $region_id = Country::find($this->country_id)->region->id;
+                    $region_id = Country::find($this->country_id)->region_id;
                     return route('population.index', [$region_id, $this->country_id, $this->id]);
                 })()
             ],

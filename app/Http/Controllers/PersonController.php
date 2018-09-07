@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\Person\PersonCollection;
+use App\Http\Resources\Person\PersonResource;
 use App\Model\Level\Level;
 use App\Model\Person\Person;
 use Illuminate\Http\Request;
@@ -48,7 +49,10 @@ class PersonController extends Controller
      */
     public function show($region_id, $country_id, $level_id,$id)
     {
-        dd($region_id, $country_id, $level_id,$id);
+//        dd($region_id, $country_id, $level_id,$id);
+        $person = Person::find($id);
+        return new PersonResource($person);
+
     }
 
     /**

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\Institution\InstitutionCollection;
+use App\Http\Resources\Institution\InstitutionResource;
 use App\Model\Institution\Institution;
 use App\Model\Level\Level;
 use Illuminate\Http\Request;
@@ -48,9 +49,11 @@ class InstitutionController extends Controller
      * @param  \App\Model\Institution\Institution $institution
      * @return \Illuminate\Http\Response
      */
-    public function show(Institution $institution)
+    public function show($region_id, $country_id, $level_id,$id)
     {
-        //
+        $institution = Institution::find($id);
+
+        return new InstitutionResource($institution);
     }
 
     /**
