@@ -23,3 +23,6 @@ Route::get('/levels', function () {
     return view('levels')->with('levels',$levels);
 });
 Route::get('country', 'CountryController@show');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

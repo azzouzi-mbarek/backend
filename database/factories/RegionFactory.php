@@ -1,5 +1,6 @@
 <?php
 
+use App\User;
 use Faker\Generator as Faker;
 
 $factory->define(App\Model\Region::class, function (Faker $faker) {
@@ -12,6 +13,10 @@ $factory->define(App\Model\Region::class, function (Faker $faker) {
                 'Afrique occidentale',
                 'Afrique australe'
             ])->random();
+
+        },
+        'user_id' => function(){
+            return User::all()->random();
         },
     ];
 });
