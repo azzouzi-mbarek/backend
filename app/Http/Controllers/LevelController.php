@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use App\Http\Resources\Level\LevelCollection;
 use App\Http\Resources\Level\LevelResource;
 use App\Model\Country;
+use App\Model\Region;
 use App\Model\Level\Level;
 use Illuminate\Http\Request;
+use App\Http\Requests\LevelRequest;
+
 
 class LevelController extends Controller
 {
@@ -18,7 +21,6 @@ class LevelController extends Controller
     public function index($region_id = null, $country_id = null, Request $request)
     {
         $level_id = $request->id;
-
 
         // return level only level one
         if ($level_id == null) {
@@ -51,10 +53,15 @@ class LevelController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(LevelRequest $request,$region,$country,$id)
     {
-        //
-    }
+        dd($request,$region,$country);
+        $level = new Level($request->all());
+        $country->Level()->save($level);
+        return response([
+            'data' => new LevelResource($level)
+
+        ], 201);    }
 
     /**
      * Display the specified resource.

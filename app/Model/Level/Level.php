@@ -19,11 +19,11 @@ class Level extends Model
         return $this->belongsTo(CategoryLevel::class);
     }
     public function level(){
-        return $this->belongsTo(Level::class);
+        return $this->belongsTo(Level::class, 'id', 'level_id');
     }
 
     public function levels(){
-        return $this->hasMany(Level::class);
+        return $this->hasMany(Level::class, 'level_id', 'id');
     }
     public  function  Population(){
         return $this->hasMany(Population::class);

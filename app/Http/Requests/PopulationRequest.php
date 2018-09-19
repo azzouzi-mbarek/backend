@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class RegionRequest extends FormRequest
+class PopulationRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -18,10 +18,10 @@ class RegionRequest extends FormRequest
 
     /**
      * Get the validation rules that apply to the request.
-     *ll
      *
      * @return array
      */
+
     public function rules()
     {
 
@@ -34,17 +34,17 @@ class RegionRequest extends FormRequest
             case 'POST':
                 {
                     return [
-                        'name' =>'required|max:255|unique:regions',
-                        'user_id'=>'required'
+
+                        'population' =>'required|max:255',
+
                     ];
                 }
             case 'PUT':
             case 'PATCH':
                 {
                     return [
-                        'name' =>'required|max:255|unique:regions',
-                        'user_id'=>'required'
-                    ];
+                        'population' =>'required|max:255',
+                     ];
                 }
             default:
                 break;

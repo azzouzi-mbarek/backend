@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class RegionRequest extends FormRequest
+class LevelRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -18,7 +18,6 @@ class RegionRequest extends FormRequest
 
     /**
      * Get the validation rules that apply to the request.
-     *ll
      *
      * @return array
      */
@@ -34,17 +33,17 @@ class RegionRequest extends FormRequest
             case 'POST':
                 {
                     return [
-                        'name' =>'required|max:255|unique:regions',
-                        'user_id'=>'required'
+
+                        'name' =>'required|max:255|unique:levels',
+                        'category_level_id'=>'required',
                     ];
                 }
             case 'PUT':
             case 'PATCH':
                 {
                     return [
-                        'name' =>'required|max:255|unique:regions',
-                        'user_id'=>'required'
-                    ];
+                        'name' =>'required|max:255|unique:levels',
+                        'category_level_id'=>'required',                     ];
                 }
             default:
                 break;

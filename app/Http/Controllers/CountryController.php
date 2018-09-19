@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CountryRequest;
 use App\Http\Resources\Country\CountryCollection;
 use App\Http\Resources\Country\CountryResource;
 use App\Model\Country;
@@ -36,9 +37,15 @@ class CountryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CountryRequest $request,Region $region)
     {
-        //
+
+        $country = new Country($request->all());
+        $region->Country()->save($country);
+        return response([
+            'data' => new CountryResource($country)
+
+        ], 201);
     }
 
     /**
@@ -71,9 +78,13 @@ class CountryController extends Controller
      * @param  \App\Model\Country  $country
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Country $country)
+    public function update(Request $request, Region $region, Country $country )
     {
-        //
+        $country->update($request->all());
+        return response([
+            'data' => new CountryResource($country)
+
+        ], 201);
     }
 
     /**
@@ -82,8 +93,9 @@ class CountryController extends Controller
      * @param  \App\Model\Country  $country
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Country $country)
+    public function destroy(Region $region,Country $country)
     {
-        //
+        $country->delete();
+        return response(null, 204);
     }
 }

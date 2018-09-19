@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PopulationRequest;
 use App\Http\Resources\Level\PopulationCollection;
+use App\Http\Resources\Level\PopulationResource;
+use App\Model\Country;
 use App\Model\Level\Level;
 use App\Model\Level\Population;
+use App\Model\Region;
 use Illuminate\Http\Request;
 
 class PopulationController extends Controller
@@ -35,9 +39,14 @@ class PopulationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store($region,$country,Level $level,PopulationRequest $request)
     {
-        //
+        $population = new Population($request->all());
+        $level->Population()->save($population);
+        return response([
+            'data' => new PopulationResource($population)
+
+        ], 201);
     }
 
     /**
@@ -69,9 +78,13 @@ class PopulationController extends Controller
      * @param  \App\Model\Level\Population  $population
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Population $population)
+    public function update($region,$country,$level, Population $population,Request $request)
     {
-        //
+        $population->update($request->all());
+        return response([
+            'data' => new PopulationResource($population)
+
+        ], 201);
     }
 
     /**

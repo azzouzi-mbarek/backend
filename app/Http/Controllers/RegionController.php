@@ -47,6 +47,7 @@ class RegionController extends Controller
     {
         $region = new Region;
         $region->name = $request->name;
+        $region->user_id=$request->user_id;
         $region->save();
         return response([
             'data' => new RegionResource($region)
