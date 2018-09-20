@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CommunicationToolRequest;
 use App\Http\Resources\Level\CommunicationToolCollection;
+use App\Http\Resources\Level\CommunicationToolResource;
 use App\Model\Level\CommunicationTool;
 use App\Model\Level\Level;
 use Illuminate\Http\Request;
@@ -36,9 +38,14 @@ class CommunicationToolController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store($region,$country,Level $level,CommunicationToolRequest $request)
     {
-        //
+        $communicationTool = new CommunicationTool($request->all());
+        $level->CommunicationTool()->save($communicationTool);
+        return response([
+            'data' => new CommunicationToolResource($communicationTool)
+
+        ], 201);
     }
 
     /**
@@ -70,9 +77,13 @@ class CommunicationToolController extends Controller
      * @param  \App\Model\Level\CommunicationTool  $communicationTool
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, CommunicationTool $communicationTool)
+    public function update($region,$country,$level,CommunicationTool $communicationTool,Request $request )
     {
-        //
+        $communicationTool->update($request->all());
+        return response([
+            'data' => new CommunicationToolResource($communicationTool)
+
+        ], 201);
     }
 
     /**
@@ -81,8 +92,9 @@ class CommunicationToolController extends Controller
      * @param  \App\Model\Level\CommunicationTool  $communicationTool
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CommunicationTool $communicationTool)
+    public function destroy($region,$country,Level $level, CommunicationTool $communicationTool)
     {
-        //
+        $communicationTool->delete();
+        return response(null, 204);
     }
 }

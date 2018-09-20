@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\FinanceRequest;
 use App\Http\Resources\Level\FinanceCollection;
+use App\Http\Resources\Level\FinanceResource;
 use App\Model\Level\Finance;
 use App\Model\Level\Level;
 use Illuminate\Http\Request;
@@ -35,9 +37,14 @@ class FinanceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store($region,$country,Level $level,FinanceRequest $request)
     {
-        //
+        $finance = new Finance($request->all());
+        $level->Finance()->save($finance);
+        return response([
+            'data' => new FinanceResource($finance)
+
+        ], 201);
     }
 
     /**
@@ -69,9 +76,13 @@ class FinanceController extends Controller
      * @param  \App\Model\Level\Finance  $finance
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Finance $finance)
+    public function update($region,$country,$level, Finance $finance,Request $request)
     {
-        //
+        $finance->update($request->all());
+        return response([
+            'data' => new FinanceResource($finance)
+
+        ], 201);
     }
 
     /**
@@ -80,8 +91,9 @@ class FinanceController extends Controller
      * @param  \App\Model\Level\Finance  $finance
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Finance $finance)
+    public function destroy($region,$country,Level $level, Finance $finance)
     {
-        //
+        $finance->delete();
+        return response(null, 204);
     }
 }

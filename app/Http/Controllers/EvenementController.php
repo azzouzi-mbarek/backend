@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\EvenementRequest;
 use App\Http\Resources\Level\EvenementCollection;
+use App\Http\Resources\Level\EvenementResource;
 use App\Model\Level\Evenement;
 use App\Model\Level\Level;
+use App\Model\Level\Programme;
 use Illuminate\Http\Request;
 
 class EvenementController extends Controller
@@ -35,9 +38,14 @@ class EvenementController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store($region,$country,Level $level,EvenementRequest $request)
     {
-        //
+        $evenement = new Evenement($request->all());
+        $level->Evenement()->save($evenement);
+        return response([
+            'data' => new EvenementResource($evenement)
+
+        ], 201);
     }
 
     /**
@@ -69,9 +77,13 @@ class EvenementController extends Controller
      * @param  \App\Model\Level\Evenement  $evenement
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Evenement $evenement)
+    public function update($region,$country,$level, Evenement $evenement,Request $request)
     {
-        //
+        $evenement->update($request->all());
+        return response([
+            'data' => new EvenementResource($evenement)
+
+        ], 201);
     }
 
     /**
@@ -80,8 +92,9 @@ class EvenementController extends Controller
      * @param  \App\Model\Level\Evenement  $evenement
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Evenement $evenement)
+    public function destroy($region,$country,Level $level, Evenement $evenement)
     {
-        //
+        $evenement->delete();
+        return response(null, 204);
     }
 }

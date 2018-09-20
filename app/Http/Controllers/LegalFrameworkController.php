@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LegalFrameworkRequest;
 use App\Http\Resources\Level\LegalFrameworkCollection;
+use App\Http\Resources\Level\LegalFrameworkResource;
 use App\Model\Level\LegalFramework;
 use App\Model\Level\Level;
 use Illuminate\Http\Request;
@@ -35,9 +37,14 @@ class LegalFrameworkController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store($region,$country,Level $level,LegalFrameworkRequest $request)
     {
-        //
+        $legalFramework = new LegalFramework($request->all());
+        $level->LegalFramework()->save($legalFramework);
+        return response([
+            'data' => new LegalFrameworkResource($legalFramework)
+
+        ], 201);
     }
 
     /**
@@ -69,9 +76,13 @@ class LegalFrameworkController extends Controller
      * @param  \App\Model\Level\LegalFramework  $legalFramework
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, LegalFramework $legalFramework)
+    public function update($region,$country,$level,LegalFramework $legalFramework,Request $request )
     {
-        //
+        $legalFramework->update($request->all());
+        return response([
+            'data' => new LegalFrameworkResource($legalFramework)
+
+        ], 201);
     }
 
     /**
@@ -80,8 +91,9 @@ class LegalFrameworkController extends Controller
      * @param  \App\Model\Level\LegalFramework  $legalFramework
      * @return \Illuminate\Http\Response
      */
-    public function destroy(LegalFramework $legalFramework)
+    public function destroy($region,$country,Level $level, LegalFramework $legalFramework)
     {
-        //
+        $legalFramework->delete();
+        return response(null, 204);
     }
 }

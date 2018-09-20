@@ -5,10 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\PopulationRequest;
 use App\Http\Resources\Level\PopulationCollection;
 use App\Http\Resources\Level\PopulationResource;
-use App\Model\Country;
 use App\Model\Level\Level;
 use App\Model\Level\Population;
-use App\Model\Region;
 use Illuminate\Http\Request;
 
 class PopulationController extends Controller
@@ -93,8 +91,9 @@ class PopulationController extends Controller
      * @param  \App\Model\Level\Population  $population
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Population $population)
+    public function destroy($region,$country,Level $level, Population $population)
     {
-        //
+        $population->delete();
+        return response(null, 204);
     }
 }
